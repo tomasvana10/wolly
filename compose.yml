@@ -1,0 +1,41 @@
+services:
+  wolly:
+    build: .
+    container_name: wolly
+    ports:
+      - "6767:6767"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:6769/wolly
+      - DENO_ENV=production
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14.18
+    container_name: pg-wolly
+    restart: unless-stopped
+    ports:
+      - "6769:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wolly
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+  postgres-dev:
+    image: postgres:14.18
+    container_name: pg-wolly-dev
+    restart: unless-stopped
+    ports:
+      - "6769:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wolly-dev
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

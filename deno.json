@@ -7,13 +7,22 @@
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "build": "deno run -A dev.ts build",
 
-    "dev": "deno run -A --watch=static/,routes/ dev.ts",
-    "deploy": "deno run build && deno run preview"
+    "dev": "deno run drizzle-generate && deno run -A --watch=static/,routes/ dev.ts",
+    "deploy": "deno run drizzle-sync && deno run build && deno run preview",
+
+    "drizzle-sync": "deno run drizzle-generate && deno run drizzle-push",
+    "drizzle-generate": "deno -A npm:drizzle-kit generate",
+    "drizzle-push": "deno -A npm:drizzle-kit push"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
   "imports": {
+    "@/": "./",
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@types/pg": "npm:@types/pg@^8.15.5",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.4",
+    "drizzle-orm": "npm:drizzle-orm@^0.44.4",
+    "pg": "npm:pg@^8.16.3",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
