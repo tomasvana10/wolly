@@ -1,5 +1,3 @@
-import Main from "../components/pages/Main.tsx";
-
 export default function Index() {
-  return <Main />;
+  return <h1>hello world</h1>
 }
