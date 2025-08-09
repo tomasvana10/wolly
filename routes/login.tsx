@@ -1,11 +1,12 @@
 import { Handlers } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
+import { cookieNames } from "../lib/cookies.ts";
 import { verifyJWT } from "../lib/jwt.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
     const cookies = getCookies(req.headers);
-    const token = cookies.auth;
+    const token = cookies[cookieNames.authCookie];
     const payload = token ? await verifyJWT(token) : null;
     
     // prevent the authenticated user from accessing this page

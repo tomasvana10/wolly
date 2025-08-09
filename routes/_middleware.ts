@@ -1,6 +1,7 @@
 import { FreshContext } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
 import { verifyJWT } from "@/lib/jwt.ts";
+import { cookieNames } from "../lib/cookies.ts";
 
 export async function handler(req: Request, ctx: FreshContext) {
   const url = new URL(req.url);
@@ -13,7 +14,7 @@ export async function handler(req: Request, ctx: FreshContext) {
   ) return await ctx.next();
 
   const cookies = getCookies(req.headers);
-  const token = cookies.auth;
+  const token = cookies[cookieNames.authCookie];
 
   const redirectToLogin = () => Response.redirect(new URL("/login", req.url));
 

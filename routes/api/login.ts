@@ -1,6 +1,7 @@
 import { Handlers } from "$fresh/server.ts";
 import { setCookie } from "$std/http/cookie.ts";
 import { createJWT } from "@/lib/jwt.ts";
+import { cookieNames } from "../../lib/cookies.ts";
 
 export const handler: Handlers = {
   async POST(req) {
@@ -19,7 +20,7 @@ export const handler: Handlers = {
       const token = await createJWT({ username });
 
       setCookie(headers, {
-        name: "auth",
+        name: cookieNames.authCookie,
         value: token,
         maxAge: 3600 * 24 * 30, // 30 days
         sameSite: "Strict",
