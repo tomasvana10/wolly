@@ -166,7 +166,7 @@ while (true) {
   if (webUsername.length < 3 || webPassword.length < 8) {
     console.error(chalk.red("Invalid credential lengths provided"));
   } else if (webPassword !== webPasswordConfirmation) {
-    console.error(chalk.red("Passwords do not match!"))
+    console.error(chalk.red("Passwords do not match!"));
   } else {
     break;
   }
@@ -222,15 +222,19 @@ try {
 
 const envFileContents = {
   PORT: `${webDevHostPort}`,
-   DATABASE_URL:
+  DATABASE_URL:
     `postgresql://${pgDevCredsParsed.user}:${pgDevCredsParsed.password}@localhost:${pgDevHostPort}/${pgDevCredsParsed.dbName}`,
-    DENO_ENV: "development",
-    USERNAME: webUsername,
-    JWT_SECRET: jwtSecret,
-    PASSWORD_HASH: passwordHash,
+  DENO_ENV: "development",
+  USERNAME: webUsername,
+  JWT_SECRET: jwtSecret,
+  PASSWORD_HASH: passwordHash,
 };
 writeFileSync(envFile, dotenv.stringify(envFileContents));
 //#end-region
 
-console.log(`\n${chalk.green("Applied your changes .env and compose.yml.")}`)
-console.log(chalk.yellowBright("WARNING: You must rebuild the docker containers (docker compose down -v) OR manually change your postgres credentials if they were modified."))
+console.log(`\n${chalk.green("Applied your changes .env and compose.yml.")}`);
+console.log(
+  chalk.yellowBright(
+    "WARNING: You must rebuild the docker containers (docker compose down -v) OR manually change your postgres credentials if they were modified.",
+  ),
+);
