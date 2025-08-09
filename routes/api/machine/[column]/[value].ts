@@ -1,4 +1,3 @@
-// routes/api/machine/[type]/[value].ts
 import { Handlers } from "$fresh/server.ts";
 import { machineTable } from "@/lib/db/schema.ts";
 import { db } from "@/lib/db/db.ts";
@@ -8,18 +7,18 @@ type MachineSelect = typeof machineTable.$inferSelect;
 
 export const handler: Handlers<MachineSelect | null> = {
   async GET(_req, ctx) {
-    const { type, value } = ctx.params;
+    const { column, value } = ctx.params;
 
     let result;
 
-    if (type === "id") {
+    if (column === "id") {
       result = await db.select().from(machineTable)
         .where(eq(machineTable.id, parseInt(value)))
         .then((values) => values)
         .catch((message) =>
           new Response(JSON.stringify({ code: 500, message }))
         );
-    } else if (type === "macaddr") {
+    } else if (column === "macaddr") {
       result = await db.select().from(machineTable)
         .where(eq(machineTable.mac, value))
         .then((values) => values)
