@@ -22,6 +22,7 @@
     "@types/pg": "npm:@types/pg@^8.15.5",
     "drizzle-kit": "npm:drizzle-kit@^0.31.4",
     "drizzle-orm": "npm:drizzle-orm@^0.44.4",
+    "jose": "npm:jose@^6.0.12",
     "pg": "npm:pg@^8.16.3",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
