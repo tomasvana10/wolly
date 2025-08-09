@@ -5,12 +5,14 @@
 Power on your LAN devices with style
 
 ## Setup
+
 1. `git clone https://github.com/tomasvana10/wolly.git`
 2. Install [Docker](https://docs.docker.com/engine/install/)
-4. Modify `compose.yml` how you wish (change ports, etc)
-5. Build and run the container `docker compose up -d --build wolly postgres`
+3. Modify `compose.yml` how you wish (change ports, etc)
+4. Build and run the container `docker compose up -d --build wolly postgres`
 
 ## Development
+
 1. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/)
 2. `docker compose up -d --build postgres-dev`
 3. `deno run dev`

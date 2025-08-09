@@ -3,7 +3,9 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_app from "./routes/_app.tsx";
-import * as $api_db_test from "./routes/api/db-test.ts";
+import * as $api_machine_id_id_ from "./routes/api/machine/id/[id].ts";
+import * as $api_machine_index from "./routes/api/machine/index.ts";
+import * as $api_machine_macaddr_id_ from "./routes/api/machine/macaddr/[id].ts";
 import * as $index from "./routes/index.tsx";
 
 import type { Manifest } from "$fresh/server.ts";
@@ -11,7 +13,9 @@ import type { Manifest } from "$fresh/server.ts";
 const manifest = {
   routes: {
     "./routes/_app.tsx": $_app,
-    "./routes/api/db-test.ts": $api_db_test,
+    "./routes/api/machine/id/[id].ts": $api_machine_id_id_,
+    "./routes/api/machine/index.ts": $api_machine_index,
+    "./routes/api/machine/macaddr/[id].ts": $api_machine_macaddr_id_,
     "./routes/index.tsx": $index,
   },
   islands: {},

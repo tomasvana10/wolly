@@ -10,7 +10,7 @@ export const sendMagicPacket = (macaddr: string) => {
       buildMagicPacket(macAddressStringToBytes(macaddr)),
       9,
       "255.255.255.255",
-      () => socket.close()
+      () => socket.close(),
     );
   });
 };
@@ -30,5 +30,5 @@ const buildMagicPacket = (macaddrValues: number[]) => {
 };
 
 const macAddressStringToBytes = (macaddr: string) => {
-  return macaddr.split(":").map(base16 => parseInt(base16, 16));
+  return macaddr.split(":").map((base16) => parseInt(base16, 16));
 };

@@ -8,6 +8,13 @@
       "when": 1754661827899,
       "tag": "0000_gigantic_karma",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754716364599,
+      "tag": "0001_eager_earthquake",
+      "breakpoints": true
     }
   ]
 }

@@ -23,7 +23,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-
   postgres-dev:
     image: postgres:14.18
     container_name: pg-wolly-dev
