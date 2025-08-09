@@ -1,3 +1,3 @@
 export const cookieNames = {
-  authCookie: "wolly_auth_cookie",
+  authCookie: "wolly_jwt",
 } as const;
