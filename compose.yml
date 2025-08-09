@@ -3,38 +3,36 @@ services:
     build: .
     container_name: wolly
     ports:
-      - "6767:6767"
+      - '6767:6767'
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:6769/wolly
-      - DENO_ENV=production
+      DATABASE_URL: 'postgresql://tomas:tomas@postgres:5432/wolly'
+      DENO_ENV: production
+      PORT: '6767'
     depends_on:
       - postgres
-
   postgres:
-    image: postgres:14.18
+    image: 'postgres:14.18'
     container_name: pg-wolly
     restart: unless-stopped
     ports:
-      - "6769:5432"
+      - '6769:5432'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: tomas
+      POSTGRES_PASSWORD: tomas
       POSTGRES_DB: wolly
     volumes:
-      - pgdata:/var/lib/postgresql/data
-
+      - 'pgdata:/var/lib/postgresql/data'
   postgres-dev:
-    image: postgres:14.18
+    image: 'postgres:14.18'
     container_name: pg-wolly-dev
     restart: unless-stopped
     ports:
-      - "6769:5432"
+      - '6769:5432'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: tomas
+      POSTGRES_PASSWORD: tomas
       POSTGRES_DB: wolly-dev
     volumes:
-      - pgdata:/var/lib/postgresql/data
-
+      - 'pgdata:/var/lib/postgresql/data'
 volumes:
-  pgdata:
+  pgdata: null
