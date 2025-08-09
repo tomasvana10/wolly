@@ -1,7 +1,8 @@
 import { Handlers } from "$fresh/server.ts";
 import { setCookie } from "$std/http/cookie.ts";
 import { createJWT } from "@/lib/jwt.ts";
-import { cookieNames } from "../../lib/cookies.ts";
+import { cookieNames } from "@/lib/cookies.ts";
+import { compare } from "bcrypt";
 
 export const handler: Handlers = {
   async POST(req) {
@@ -13,8 +14,8 @@ export const handler: Handlers = {
 
     // user entered correct details, create JWT
     if (
-      username === Deno.env.get("USERNAME") &&
-      pass === Deno.env.get("PASSWORD")
+      username === Deno.env.get("USERNAME") && pass &&
+      await compare(pass, Deno.env.get("PASSWORD_HASH")!)
     ) {
       const headers = new Headers();
       const token = await createJWT({ username });
